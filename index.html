@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oriom — Organize sua vida com fé</title>
+  <meta name="description" content="O primeiro app que une devocional cristão, controle financeiro e organização diária. R$ 29,90 pagamento único.">
+  <meta property="og:title" content="Oriom — Organize sua vida com fé">
+  <meta property="og:description" content="Devocional + finanças + tarefas num só app. Feito por cristãos, para cristãos.">
+  <meta name="theme-color" content="#085041">
+  <!-- PIXEL META/GOOGLE ADS AQUI -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='32' height='32' rx='7' fill='%23085041'/%3E%3Cpath d='M16 4L8 18L12 20L16 11L20 20L24 18L16 4Z' fill='%231D9E75'/%3E%3Cpath d='M12 20L9 26L16 23L23 26L20 20L16 24L12 20Z' fill='%235DCAA5'/%3E%3Cpath d='M16 23L9 26L16 28.5L23 26L16 23Z' fill='%239FE1CB'/%3E%3Ccircle cx='16' cy='17' r='1.8' fill='%23E1F5EE'/%3E%3C/svg%3E">
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{
+      --g:#0F6E56;--gd:#085041;--gl:#E1F5EE;--gm:#1D9E75;--gc:#9FE1CB;
+      --p:#534AB7;--pl:#EEEDFE;
+      --w:#BA7517;--wl:#FAEEDA;
+      --pk:#D4537E;
+      --bg:#ffffff;--bg2:#f5f8f6;
+      --tx:#1a1a1a;--tx2:#4a5652;--tx3:#8a9490;
+      --bd:#e2e8e5;
+    }
+    html{scroll-behavior:smooth}
+    body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(--tx);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+    /* NAV */
+    .nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:10px 16px;display:flex;justify-content:space-between;align-items:center;background:rgba(255,255,255,0.85);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid transparent;transition:all .3s}
+    .nav.s{border-bottom-color:var(--bd);box-shadow:0 1px 8px rgba(0,0,0,0.04)}
+    .nav-l{display:flex;align-items:center;gap:7px;text-decoration:none;color:var(--gd)}
+    .nav-l svg{width:22px;height:26px}
+    .nav-l span{font-size:18px;font-weight:800;letter-spacing:.5px}
+    .nav-b{background:var(--gd);color:#fff;padding:9px 20px;border-radius:99px;font-size:13px;font-weight:700;text-decoration:none;transition:all .25s;border:none;cursor:pointer}
+    .nav-b:hover{background:var(--g);transform:translateY(-1px)}
+    .nav-login{color:var(--gd);font-size:13px;font-weight:600;text-decoration:none;padding:9px 16px;border-radius:99px;border:1.5px solid var(--bd);transition:all .25s}
+    .nav-login:hover{border-color:var(--gm);color:var(--gm);background:var(--gl)}
+
+    /* HERO */
+    .hero{padding:80px 20px 40px;text-align:center;background:linear-gradient(180deg,var(--gl) 0%,var(--bg) 100%)}
+    .hero-badge{display:inline-block;background:rgba(15,110,86,0.1);border:1px solid rgba(15,110,86,0.2);color:var(--g);padding:5px 14px;border-radius:99px;font-size:12px;font-weight:600;margin-bottom:16px}
+    .hero h1{font-size:28px;font-weight:800;line-height:1.15;margin-bottom:12px;color:var(--gd)}
+    .hero h1 em{font-style:italic;color:var(--gm);font-weight:800}
+    .hero-sub{font-size:14px;color:var(--tx2);line-height:1.6;margin-bottom:24px;max-width:340px;margin-left:auto;margin-right:auto}
+
+    /* PHONES */
+    .phones{display:flex;gap:12px;justify-content:center;overflow-x:auto;padding:0 16px 20px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+    .phones::-webkit-scrollbar{display:none}
+    .ph{width:200px;min-width:200px;height:400px;background:#111;border-radius:28px;border:2.5px solid #2a2a2a;padding:8px;scroll-snap-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.12);transition:transform .4s}
+    .ph:hover{transform:translateY(-4px)}
+    .ph-s{width:100%;height:100%;background:#fafbfa;border-radius:20px;overflow:hidden;padding:12px;font-size:10px}
+    .ph-h{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+    .ph-logo{display:flex;align-items:center;gap:4px;font-weight:700;font-size:10px;color:var(--gd)}
+    .ph-logo svg{width:12px;height:14px}
+    .ph-av{width:18px;height:18px;border-radius:50%;background:var(--gl);display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;color:var(--gd)}
+
+    /* Phone 1 - Inicio */
+    .ph1-greet{margin-bottom:8px}
+    .ph1-greet b{font-size:14px;display:block;color:var(--tx)}
+    .ph1-greet span{font-size:8px;color:var(--tx3)}
+    .ph1-verse{background:var(--gl);border-radius:10px;padding:10px;margin-bottom:6px}
+    .ph1-verse-tag{font-size:7px;font-weight:700;letter-spacing:.5px;color:var(--gd);text-transform:uppercase;margin-bottom:3px}
+    .ph1-verse-t{font-size:9px;font-style:italic;color:#333;line-height:1.4;margin-bottom:3px}
+    .ph1-verse-r{font-size:8px;font-weight:600;color:var(--g)}
+    .ph1-fin{background:linear-gradient(135deg,var(--g),var(--gd));border-radius:10px;padding:10px;color:#fff;margin-bottom:6px}
+    .ph1-fin small{font-size:7px;opacity:.8}
+    .ph1-fin b{font-size:18px;display:block;margin:2px 0}
+    .ph1-fin span{font-size:7px;opacity:.7}
+    .ph1-prog{background:#fff;border:1px solid var(--bd);border-radius:10px;padding:8px}
+    .ph1-prog p{font-size:8px;font-weight:600;margin-bottom:4px}
+    .ph1-bar{height:4px;background:#eee;border-radius:99px;overflow:hidden}
+    .ph1-bar div{height:100%;width:65%;background:var(--gm);border-radius:99px}
+
+    /* Phone 2 - Prosperidade */
+    .ph2-title{font-size:13px;font-weight:700;margin-bottom:8px;color:var(--tx)}
+    .ph2-wallet{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-bottom:6px}
+    .ph2-wallet div{background:var(--bg2);border-radius:8px;padding:7px}
+    .ph2-wallet small{font-size:7px;color:var(--tx3);display:block}
+    .ph2-wallet b{font-size:12px;color:var(--tx)}
+    .ph2-verse{background:var(--pl);border-radius:8px;padding:8px;margin-bottom:6px;font-size:8px;color:var(--p);line-height:1.4}
+    .ph2-bill{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid #eee}
+    .ph2-bill:last-child{border:none}
+    .ph2-bill-n{font-size:9px;font-weight:600}
+    .ph2-bill-v{font-size:9px;color:var(--tx3)}
+    .ph2-badge{font-size:7px;padding:2px 6px;border-radius:99px;font-weight:600}
+    .ph2-paid{background:var(--gl);color:var(--g)}
+    .ph2-pend{background:var(--wl);color:var(--w)}
+
+    /* Phone 3 - Oracao */
+    .ph3-title{font-size:13px;font-weight:700;margin-bottom:8px;color:var(--tx)}
+    .ph3-timer{background:var(--pl);border-radius:12px;padding:14px;text-align:center;margin-bottom:8px}
+    .ph3-timer small{font-size:8px;color:var(--p);display:block;margin-bottom:4px}
+    .ph3-timer b{font-size:26px;color:var(--p);letter-spacing:2px;display:block}
+    .ph3-timer span{display:inline-flex;gap:4px;margin-top:6px}
+    .ph3-timer span i{font-style:normal;width:20px;height:20px;border-radius:50%;background:rgba(83,74,183,0.15);font-size:7px;display:flex;align-items:center;justify-content:center;color:var(--p)}
+    .ph3-read{background:var(--bg2);border-radius:10px;padding:10px;margin-bottom:8px}
+    .ph3-read p{font-size:8px;font-weight:600;margin-bottom:4px}
+    .ph3-read-bar{height:4px;background:#ddd;border-radius:99px;overflow:hidden;margin-bottom:4px}
+    .ph3-read-bar div{height:100%;width:38%;background:var(--p);border-radius:99px}
+    .ph3-read span{font-size:8px;color:var(--tx3)}
+    .ph3-btn{width:100%;background:var(--p);color:#fff;border:none;border-radius:8px;padding:8px;font-size:9px;font-weight:700}
+
+    .hero-cta{display:block;max-width:340px;margin:0 auto;background:var(--gd);color:#fff;padding:16px;border-radius:99px;font-size:16px;font-weight:700;text-decoration:none;text-align:center;transition:all .25s;box-shadow:0 4px 24px rgba(8,80,65,0.25)}
+    .hero-cta:hover{background:var(--g);transform:translateY(-2px);box-shadow:0 8px 32px rgba(8,80,65,0.3)}
+    .hero-note{text-align:center;margin-top:10px;font-size:11px;color:var(--tx3)}
+
+    /* SECTIONS */
+    section{padding:48px 20px}
+    .stag{display:inline-block;background:rgba(15,110,86,0.1);border:1px solid rgba(15,110,86,0.15);color:var(--g);padding:4px 12px;border-radius:99px;font-size:11px;font-weight:600;margin-bottom:10px}
+    .stitle{font-size:22px;font-weight:800;line-height:1.2;margin-bottom:8px;color:var(--gd)}
+    .ssub{font-size:13px;color:var(--tx2);line-height:1.6}
+
+    /* PAIN */
+    .pain{background:var(--bg2)}
+    .pain-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:20px}
+    .pain-c{background:var(--bg);border:1px solid var(--bd);border-radius:16px;padding:16px;transition:all .3s}
+    .pain-c:nth-child(3){grid-column:1/-1}
+    .pain-c .ic{font-size:20px;margin-bottom:8px}
+    .pain-c h3{font-size:13px;font-weight:700;margin-bottom:4px}
+    .pain-c p{font-size:11px;color:var(--tx2);line-height:1.5}
+
+    /* FEATURES */
+    .feat-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:20px}
+    .feat-c{background:var(--bg2);border:1.5px solid var(--bd);border-radius:16px;padding:16px;transition:all .3s;position:relative;overflow:hidden}
+    .feat-c::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;opacity:0;transition:opacity .3s}
+    .feat-c:hover::before{opacity:1}
+    .feat-c:nth-child(1)::before{background:var(--gm)}
+    .feat-c:nth-child(2)::before{background:var(--p)}
+    .feat-c:nth-child(3)::before{background:var(--w)}
+    .feat-c:nth-child(4)::before{background:var(--pk)}
+    .feat-c .ic{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:18px;margin-bottom:10px}
+    .feat-c h3{font-size:13px;font-weight:700;margin-bottom:4px}
+    .feat-c p{font-size:11px;color:var(--tx2);line-height:1.5}
+
+    /* BENEFITS */
+    .ben{background:var(--bg2)}
+    .ben-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:16px}
+    .ben-i{display:flex;align-items:flex-start;gap:8px;background:var(--bg);border:1px solid var(--bd);border-radius:12px;padding:12px;transition:all .3s}
+    .ben-i:hover{border-color:var(--gm)}
+    .ben-ck{width:20px;height:20px;border-radius:50%;background:var(--gl);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--g);font-size:10px;font-weight:700;margin-top:1px}
+    .ben-i p{font-size:11px;color:var(--tx2);line-height:1.4}
+
+    /* TESTIMONIALS */
+    .test-scroll{display:flex;gap:12px;overflow-x:auto;padding:20px 0 8px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+    .test-scroll::-webkit-scrollbar{display:none}
+    .test-c{min-width:280px;background:var(--bg2);border:1px solid var(--bd);border-radius:16px;padding:20px;scroll-snap-align:center}
+    .test-stars{color:var(--w);font-size:12px;letter-spacing:1px;margin-bottom:10px}
+    .test-t{font-size:12px;color:var(--tx2);line-height:1.6;margin-bottom:14px;font-style:italic}
+    .test-a{display:flex;align-items:center;gap:10px}
+    .test-av{width:32px;height:32px;border-radius:50%;background:var(--gl);display:flex;align-items:center;justify-content:center;color:var(--g);font-weight:700;font-size:13px}
+    .test-n{font-size:12px;font-weight:600}
+    .test-info{font-size:10px;color:var(--tx3)}
+
+    /* PRICING */
+    .price{background:linear-gradient(180deg,var(--bg) 0%,var(--gl) 100%);text-align:center;padding:48px 20px 60px}
+    .price-card{max-width:360px;margin:20px auto 0;background:var(--bg);border:2.5px solid var(--gm);border-radius:24px;padding:28px 20px;box-shadow:0 12px 48px rgba(15,110,86,0.12);position:relative;overflow:hidden}
+    .price-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--gm),var(--p),var(--gm))}
+    .price-badge{display:inline-block;background:var(--gd);color:#fff;padding:5px 16px;border-radius:99px;font-size:11px;font-weight:700;margin-bottom:16px}
+    .price-old{font-size:16px;color:var(--tx3);text-decoration:line-through}
+    .price-val{font-size:48px;font-weight:800;color:var(--gd);margin:4px 0}
+    .price-val sup{font-size:22px;vertical-align:super}
+    .price-sub{font-size:13px;color:var(--tx2);margin-bottom:20px}
+    .price-list{text-align:left;display:flex;flex-direction:column;gap:8px;margin-bottom:24px}
+    .price-li{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--tx2)}
+    .price-li b{color:var(--gm);font-size:14px;flex-shrink:0}
+    .price-btn{display:block;width:100%;background:var(--gd);color:#fff;padding:16px;border-radius:99px;font-size:16px;font-weight:700;text-decoration:none;text-align:center;border:none;cursor:pointer;transition:all .25s;box-shadow:0 4px 20px rgba(8,80,65,0.3);animation:pulse 2.5s infinite}
+    .price-btn:hover{background:var(--gm);transform:translateY(-2px)}
+    @keyframes pulse{0%,100%{box-shadow:0 4px 20px rgba(8,80,65,0.3)}50%{box-shadow:0 4px 32px rgba(8,80,65,0.5)}}
+    .price-guar{display:flex;align-items:center;justify-content:center;gap:6px;margin-top:14px;font-size:11px;color:var(--tx3)}
+    .price-pay{display:flex;justify-content:center;gap:14px;margin-top:10px;font-size:11px;color:var(--tx3)}
+    .price-social{margin-top:14px;font-size:12px;color:var(--w);font-weight:600}
+
+    /* FAQ */
+    .faq{background:var(--bg)}
+    .faq-list{margin-top:20px}
+    .faq-i{border-bottom:1px solid var(--bd);padding:14px 0;cursor:pointer}
+    .faq-q{display:flex;justify-content:space-between;align-items:center;font-size:14px;font-weight:600;color:var(--tx)}
+    .faq-arr{font-size:16px;color:var(--tx3);transition:transform .3s}
+    .faq-i.open .faq-arr{transform:rotate(180deg);color:var(--g)}
+    .faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease;font-size:12px;color:var(--tx2);line-height:1.6}
+    .faq-i.open .faq-a{max-height:200px;padding-top:10px}
+
+    /* FOOTER */
+    .foot{background:var(--gd);padding:40px 20px;text-align:center}
+    .foot-logo{display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:12px}
+    .foot-logo span{font-size:20px;font-weight:800;color:var(--gl);letter-spacing:.5px}
+    .foot-tag{font-size:13px;color:var(--gc);margin-bottom:20px}
+    .foot-btn{display:inline-block;background:#fff;color:var(--gd);padding:12px 28px;border-radius:99px;font-size:14px;font-weight:700;text-decoration:none;transition:all .3s}
+    .foot-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,0.2)}
+    .foot-legal{margin-top:28px;font-size:10px;color:rgba(255,255,255,0.3)}
+    .foot-links{margin-top:6px}
+    .foot-links a{color:rgba(255,255,255,0.3);text-decoration:none;margin:0 6px;font-size:10px}
+
+    /* SCROLL ANIMATIONS */
+    .rv{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+    .rv.v{opacity:1;transform:translateY(0)}
+    .rv-l{opacity:0;transform:translateX(-24px);transition:opacity .6s ease,transform .6s ease}
+    .rv-l.v{opacity:1;transform:translateX(0)}
+    .rv-r{opacity:0;transform:translateX(24px);transition:opacity .6s ease,transform .6s ease}
+    .rv-r.v{opacity:1;transform:translateX(0)}
+    .rv-s{opacity:0;transform:scale(0.92);transition:opacity .6s ease,transform .6s ease}
+    .rv-s.v{opacity:1;transform:scale(1)}
+
+    @media(min-width:600px){
+      .hero h1{font-size:36px}
+      .pain-row,.feat-row,.ben-grid{grid-template-columns:1fr 1fr}
+      .phones{justify-content:center}
+    }
+    @media(min-width:900px){
+      .hero h1{font-size:44px}
+      .pain-row{grid-template-columns:1fr 1fr 1fr}
+      .pain-c:nth-child(3){grid-column:auto}
+      .test-scroll{justify-content:center;overflow:visible;flex-wrap:wrap}
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <a href="#" class="nav-l">
+    <svg viewBox="0 0 56 68" fill="none"><path d="M28 4L6 38L16 42L28 20L40 42L50 38L28 4Z" fill="#1D9E75"/><path d="M16 42L10 56L28 48L46 56L40 42L28 52L16 42Z" fill="#5DCAA5"/><path d="M28 48L10 56L28 64L46 56L28 48Z" fill="#9FE1CB"/><circle cx="28" cy="36" r="4" fill="#E1F5EE"/></svg>
+    <span>Oriom</span>
+  </a>
+  <div style="display:flex;gap:8px;align-items:center">
+    <a href="https://app.oriom.online" class="nav-login">Entrar</a>
+    <a href="https://pay.kiwify.com.br/G5dDRya" class="nav-b">Quero o Oriom</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="rv"><div class="hero-badge">✝️ O app que conecta sua fé com sua rotina</div></div>
+  <h1 class="rv" style="transition-delay:.1s">Comece todo dia com <em>Deus</em> e termine com as contas em dia.</h1>
+  <p class="hero-sub rv" style="transition-delay:.15s">Devocional, organização e controle financeiro num só lugar. Feito por cristãos, para cristãos.</p>
+
+  <div class="phones rv" style="transition-delay:.2s">
+    <!-- Phone 1: Início -->
+    <div class="ph">
+      <div class="ph-s">
+        <div class="ph-h"><div class="ph-logo"><svg width="12" height="14" viewBox="0 0 56 68" fill="none"><path d="M28 4L6 38L16 42L28 20L40 42L50 38L28 4Z" fill="#1D9E75"/><path d="M16 42L10 56L28 48L46 56L40 42L28 52L16 42Z" fill="#5DCAA5"/><path d="M28 48L10 56L28 64L46 56L28 48Z" fill="#9FE1CB"/><circle cx="28" cy="36" r="4" fill="#E1F5EE"/></svg> Oriom</div><div class="ph-av">F</div></div>
+        <div class="ph1-greet"><b>Bom dia, Felipe!</b><span>Sexta-feira, 29 de Maio</span></div>
+        <div class="ph1-verse"><div class="ph1-verse-tag">Palavra do dia</div><div class="ph1-verse-t">"Entrega o teu caminho ao Senhor; confia nele, e ele tudo fará."</div><div class="ph1-verse-r">Salmos 37:5</div></div>
+        <div class="ph1-fin"><small>Livre hoje</small><b>R$ 163,33</b><span>Saldo: R$ 2.450 · 3 dias</span></div>
+        <div class="ph1-prog"><p>Seu progresso — 65%</p><div class="ph1-bar"><div></div></div></div>
+      </div>
+    </div>
+
+    <!-- Phone 2: Prosperidade -->
+    <div class="ph">
+      <div class="ph-s">
+        <div class="ph-h"><div class="ph-logo"><svg width="12" height="14" viewBox="0 0 56 68" fill="none"><path d="M28 4L6 38L16 42L28 20L40 42L50 38L28 4Z" fill="#1D9E75"/><path d="M16 42L10 56L28 48L46 56L40 42L28 52L16 42Z" fill="#5DCAA5"/><path d="M28 48L10 56L28 64L46 56L28 48Z" fill="#9FE1CB"/><circle cx="28" cy="36" r="4" fill="#E1F5EE"/></svg> Oriom</div><div class="ph-av">F</div></div>
+        <div class="ph2-title">Prosperidade</div>
+        <div class="ph2-wallet"><div><small>Poupança</small><b>R$ 3.200</b></div><div><small>Saldo mês</small><b>R$ 2.450</b></div></div>
+        <div class="ph2-verse">"O sábio guarda no seu tesouro; mas o insensato o devora." — Pv 21:20</div>
+        <div style="font-size:9px;font-weight:700;margin-bottom:6px;color:var(--tx)">Meus compromissos</div>
+        <div class="ph2-bill"><div><div class="ph2-bill-n">Aluguel</div><div class="ph2-bill-v">Dia 5 · R$ 1.500</div></div><span class="ph2-badge ph2-paid">Pago</span></div>
+        <div class="ph2-bill"><div><div class="ph2-bill-n">Internet</div><div class="ph2-bill-v">Dia 20 · R$ 100</div></div><span class="ph2-badge ph2-pend">Pendente</span></div>
+        <div class="ph2-bill"><div><div class="ph2-bill-n">Energia</div><div class="ph2-bill-v">Dia 15 · R$ 200</div></div><span class="ph2-badge ph2-pend">Pendente</span></div>
+        <div style="margin-top:8px;display:grid;grid-template-columns:1fr 1fr;gap:4px">
+          <div style="background:var(--pl);border-radius:8px;padding:6px;text-align:center"><div style="font-size:7px;color:var(--p)">Dízimo</div><div style="font-size:11px;font-weight:700;color:var(--p)">R$ 450</div></div>
+          <div style="background:#fbeaf0;border-radius:8px;padding:6px;text-align:center"><div style="font-size:7px;color:var(--pk)">Ofertas</div><div style="font-size:11px;font-weight:700;color:var(--pk)">R$ 150</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Phone 3: Oração -->
+    <div class="ph">
+      <div class="ph-s">
+        <div class="ph-h"><div class="ph-logo"><svg width="12" height="14" viewBox="0 0 56 68" fill="none"><path d="M28 4L6 38L16 42L28 20L40 42L50 38L28 4Z" fill="#1D9E75"/><path d="M16 42L10 56L28 48L46 56L40 42L28 52L16 42Z" fill="#5DCAA5"/><path d="M28 48L10 56L28 64L46 56L28 48Z" fill="#9FE1CB"/><circle cx="28" cy="36" r="4" fill="#E1F5EE"/></svg> Oriom</div><div class="ph-av">F</div></div>
+        <div class="ph3-title">Oração & Devocional</div>
+        <div class="ph3-timer">
+          <small>Tempo com Deus</small>
+          <b>05:00</b>
+          <span><i>5m</i><i>10m</i><i>15m</i><i>30m</i></span>
+        </div>
+        <div class="ph3-read">
+          <p>📖 Plano de leitura — 90 dias</p>
+          <div class="ph3-read-bar"><div></div></div>
+          <span>Dia 34 de 90 · Mateus 14-16</span>
+        </div>
+        <button class="ph3-btn">Concluir devocional</button>
+        <div style="margin-top:8px;display:grid;grid-template-columns:1fr 1fr;gap:4px">
+          <div style="background:var(--bg2);border-radius:8px;padding:6px;text-align:center"><div style="font-size:14px;font-weight:700;color:var(--p)">12</div><div style="font-size:7px;color:var(--tx3)">Dias seguidos</div></div>
+          <div style="background:var(--bg2);border-radius:8px;padding:6px;text-align:center"><div style="font-size:14px;font-weight:700;color:var(--gm)">8</div><div style="font-size:7px;color:var(--tx3)">Testemunhos</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <a href="https://pay.kiwify.com.br/G5dDRya" class="hero-cta rv" style="transition-delay:.3s">Quero o Oriom — R$ 29,90</a>
+  <p class="hero-note rv" style="transition-delay:.35s">Pagamento único · Acesso imediato · Sem mensalidade</p>
+</section>
+
+<!-- DOR -->
+<section class="pain">
+  <div class="rv"><span class="stag">O problema</span>
+  <h2 class="stitle">Sua vida espiritual e financeira<br>estão desconectadas?</h2></div>
+  <div class="pain-row">
+    <div class="pain-c rv-l" style="transition-delay:.1s"><div class="ic">📖</div><h3>Sem constância</h3><p>Quer ter disciplina no devocional mas a correria não deixa.</p></div>
+    <div class="pain-c rv-r" style="transition-delay:.2s"><div class="ic">💸</div><h3>Dinheiro some</h3><p>Fim do mês chega e você não sabe pra onde foi o dinheiro.</p></div>
+    <div class="pain-c rv" style="transition-delay:.3s"><div class="ic">🌀</div><h3>Piloto automático</h3><p>Dias sem propósito, sem organização. A vida passa e você só reage.</p></div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section>
+  <div class="rv"><span class="stag">A solução</span>
+  <h2 class="stitle">Tudo num só app.</h2>
+  <p class="ssub">Devocional, tarefas, finanças e oração — tudo conectado.</p></div>
+  <div class="feat-row">
+    <div class="feat-c rv-s" style="transition-delay:.1s"><div class="ic" style="background:rgba(29,158,117,0.12)">☀️</div><h3>Devocional diário</h3><p>120+ versículos com reflexão prática pra ler direto no app.</p></div>
+    <div class="feat-c rv-s" style="transition-delay:.2s"><div class="ic" style="background:rgba(83,74,183,0.12)">✅</div><h3>Tarefas com propósito</h3><p>Organize por dia da semana e acompanhe seu progresso.</p></div>
+    <div class="feat-c rv-s" style="transition-delay:.3s"><div class="ic" style="background:rgba(186,117,23,0.12)">💰</div><h3>Mordomia cristã</h3><p>Saiba quanto pode gastar por dia. Controle dízimos e metas.</p></div>
+    <div class="feat-c rv-s" style="transition-delay:.4s"><div class="ic" style="background:rgba(212,83,126,0.12)">🔥</div><h3>Vida de oração</h3><p>Timer, plano de leitura e pedidos que viram testemunhos.</p></div>
+  </div>
+</section>
+
+<!-- BENEFITS -->
+<section class="ben">
+  <div class="rv"><span class="stag">Diferenciais</span>
+  <h2 class="stitle">Por que o Oriom é diferente?</h2></div>
+  <div class="ben-grid">
+    <div class="ben-i rv-l"><div class="ben-ck">✓</div><p>Devocional + finanças + tarefas num só app</p></div>
+    <div class="ben-i rv-r"><div class="ben-ck">✓</div><p>Sabe quanto gastar HOJE sem apertar no mês</p></div>
+    <div class="ben-i rv-l"><div class="ben-ck">✓</div><p>Controle de dízimos e ofertas com total anual</p></div>
+    <div class="ben-i rv-r"><div class="ben-ck">✓</div><p>Pedidos de oração viram testemunhos</p></div>
+    <div class="ben-i rv-l"><div class="ben-ck">✓</div><p>Plano de leitura bíblica de 90 dias</p></div>
+    <div class="ben-i rv-r"><div class="ben-ck">✓</div><p>Funciona no celular, tablet e computador</p></div>
+    <div class="ben-i rv-l"><div class="ben-ck">✓</div><p>Linguagem cristã, não jargão corporativo</p></div>
+    <div class="ben-i rv-r"><div class="ben-ck">✓</div><p>Pagamento único — sem mensalidade</p></div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section>
+  <div class="rv"><span class="stag">Depoimentos</span>
+  <h2 class="stitle">O que estão dizendo</h2></div>
+  <div class="test-scroll">
+    <div class="test-c rv-l"><div class="test-stars">★★★★★</div><p class="test-t">"Nunca conseguia manter o devocional. Com o Oriom, já estou no dia 47 seguido! E organizei minhas finanças."</p><div class="test-a"><div class="test-av">A</div><div><div class="test-n">Ana Carolina</div><div class="test-info">34 anos</div></div></div></div>
+    <div class="test-c rv"><div class="test-stars">★★★★★</div><p class="test-t">"Saber quanto posso gastar por dia me deu uma paz que eu não tinha. A mordomia cristã mudou minha visão."</p><div class="test-a"><div class="test-av">M</div><div><div class="test-n">Marcos Ribeiro</div><div class="test-info">41 anos</div></div></div></div>
+    <div class="test-c rv-r"><div class="test-stars">★★★★★</div><p class="test-t">"Simples, bonito e com a Palavra. Uso todo dia de manhã. Meus pedidos de oração já viraram testemunhos!"</p><div class="test-a"><div class="test-av">P</div><div><div class="test-n">Priscila Mendes</div><div class="test-info">28 anos</div></div></div></div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="price" id="preco">
+  <div class="rv"><span class="stag">Oferta especial</span>
+  <h2 class="stitle">Organize sua vida com fé.</h2></div>
+  <div class="price-card rv-s">
+    <div class="price-badge">🔥 Oferta de lançamento</div>
+    <div class="price-old">R$ 97,00</div>
+    <div class="price-val">R$ 29<sup>,90</sup></div>
+    <div class="price-sub">Pagamento único. Acesso vitalício.</div>
+    <div class="price-list">
+      <div class="price-li"><b>✓</b> App Oriom completo</div>
+      <div class="price-li"><b>✓</b> 120+ devocionais com reflexão</div>
+      <div class="price-li"><b>✓</b> Tarefas por dia da semana</div>
+      <div class="price-li"><b>✓</b> Controle financeiro cristão</div>
+      <div class="price-li"><b>✓</b> Timer de oração + leitura bíblica</div>
+      <div class="price-li"><b>✓</b> Dízimos, ofertas e metas</div>
+      <div class="price-li"><b>✓</b> Celular + computador</div>
+      <div class="price-li"><b>✓</b> Atualizações futuras grátis</div>
+    </div>
+    <a href="https://pay.kiwify.com.br/G5dDRya" class="price-btn">QUERO O ORIOM POR R$ 29,90</a>
+    <div class="price-guar">🛡️ 7 dias de garantia incondicional</div>
+    <div class="price-pay"><span>💳 Cartão</span><span>📱 Pix</span><span>📄 Boleto</span></div>
+    <div class="price-social">🔥 247 pessoas já garantiram</div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="rv"><span class="stag">Dúvidas</span>
+  <h2 class="stitle">Perguntas frequentes</h2></div>
+  <div class="faq-list">
+    <div class="faq-i rv" onclick="this.classList.toggle('open')"><div class="faq-q">O Oriom é um app ou site? <span class="faq-arr">▾</span></div><div class="faq-a">Funciona no navegador do celular como um app. Salve na tela inicial e use como qualquer aplicativo, sem baixar na loja.</div></div>
+    <div class="faq-i rv" onclick="this.classList.toggle('open')"><div class="faq-q">Funciona em qualquer celular? <span class="faq-arr">▾</span></div><div class="faq-a">Sim! Android, iPhone, tablet e computador. Basta ter um navegador.</div></div>
+    <div class="faq-i rv" onclick="this.classList.toggle('open')"><div class="faq-q">O pagamento é mensal? <span class="faq-arr">▾</span></div><div class="faq-a">Não! Pagamento único de R$ 29,90. Paga uma vez, usa pra sempre. Atualizações futuras inclusas.</div></div>
+    <div class="faq-i rv" onclick="this.classList.toggle('open')"><div class="faq-q">Meus dados ficam salvos? <span class="faq-arr">▾</span></div><div class="faq-a">Sim! Salvos na nuvem com segurança. Acesse de qualquer dispositivo com seu login.</div></div>
+    <div class="faq-i rv" onclick="this.classList.toggle('open')"><div class="faq-q">Tem garantia? <span class="faq-arr">▾</span></div><div class="faq-a">7 dias de garantia incondicional. Não gostou? Reembolso de 100%, sem burocracia.</div></div>
+    <div class="faq-i rv" onclick="this.classList.toggle('open')"><div class="faq-q">Como recebo o acesso? <span class="faq-arr">▾</span></div><div class="faq-a">Imediatamente após o pagamento, você recebe login e senha por email. Acesse app.oriom.online e comece a usar.</div></div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="foot-logo">
+    <svg width="22" height="26" viewBox="0 0 56 68" fill="none"><path d="M28 4L6 38L16 42L28 20L40 42L50 38L28 4Z" fill="#1D9E75"/><path d="M16 42L10 56L28 48L46 56L40 42L28 52L16 42Z" fill="#5DCAA5"/><path d="M28 48L10 56L28 64L46 56L28 48Z" fill="#9FE1CB"/><circle cx="28" cy="36" r="4" fill="#E1F5EE"/></svg>
+    <span>Oriom</span>
+  </div>
+  <p class="foot-tag">Organize sua vida com fé.</p>
+  <a href="https://pay.kiwify.com.br/G5dDRya" class="foot-btn">Quero o Oriom — R$ 29,90</a>
+  <p class="foot-legal">© 2026 Oriom. Todos os direitos reservados.</p>
+  <div class="foot-links"><a href="#">Termos</a><a href="#">Privacidade</a></div>
+</footer>
+
+<script>
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('s',scrollY>30)});
+const obs=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting)el.target.classList.add('v')})},{threshold:.1,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.rv,.rv-l,.rv-r,.rv-s').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
